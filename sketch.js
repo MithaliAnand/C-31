@@ -8,6 +8,86 @@ var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
 
+//a group of characters = string 
+var x = "mithali"; 
+var y = 1;
+var z = true;
+
+//2 more kinds of data 
+var data = null;
+
+var data1;
+
+console.log(x);
+console.log(y);
+console.log(z);
+
+console.log(data1);
+console.log(data);
+
+
+//arrays - group of data which might be similar or dissimilar
+
+var arr = [1,2,3,4];
+
+var arr1 = ["Mithali",1,true,5,"Shweta"];
+
+console.log(arr);
+
+console.log(arr1);
+
+//length = 5
+//last index = length - 1 = 4
+
+console.log(arr[3]);
+console.log(arr1[3]);
+
+//arrays can also store arrays 
+var array1 = [[1,2,3],["Mithali","Shweta"],[1,"Hi"]];
+console.log(array1);
+console.log(array1[1][0]);
+
+//["Mithali","Shweta"] -> "Mithali"
+
+//"hi"
+
+console.log(array1[2][1]);
+
+
+//3
+
+console.log(array1[0][2]);
+
+
+
+
+
+//1
+
+console.log(array1[0][0]);
+
+
+//"Shweta"
+
+console.log(array1[1][1]);
+
+
+
+
+
+//["Mithali","Shweta"]
+
+console.log(array1[1]);
+
+
+array1.push("Hellooooo");
+console.log(array1);
+
+
+array1.pop();
+console.log(array1);
+
+var gameState = "onSling";
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,16 +149,19 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState != "launched"){
+     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+        //slingshot.attach(bird.body);
     }
 }
